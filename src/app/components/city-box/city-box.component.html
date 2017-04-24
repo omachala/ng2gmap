@@ -1,0 +1,21 @@
+<div class="citybox">
+    <div class="ui horizontal list">
+        <div class="item" *ngFor="let city of cityList">
+            <div class="content">
+                <div class="header" (click)="showCity(city.setting)">{{city.name}}</div>
+            </div>
+        </div>
+    </div>
+
+    <button class="ui button primary" (click)="myModalNormal.show({inverted: true})">Click me</button>
+    <sm-modal title="Hello from Modal" class="" icon="home" #myModalNormal>
+        <modal-content>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        </modal-content>
+        <modal-actions>
+            <div class="ui buttons">
+                <div class="ui button primary" (click)="myModalNormal.hide()">Close modal</div>
+            </div>
+        </modal-actions>
+    </sm-modal>
+</div>
