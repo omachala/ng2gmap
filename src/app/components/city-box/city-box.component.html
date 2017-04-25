@@ -1,21 +1,39 @@
 <div class="citybox">
-    <div class="ui horizontal list">
-        <div class="item" *ngFor="let city of cityList">
-            <div class="content">
-                <div class="header" (click)="showCity(city.setting)">{{city.name}}</div>
+
+    <div class="ui top fixed menu">
+        <div class="item">
+            <img src="https://dkstatic.s3.amazonaws.com/lp/new-dti/moneybags.png">
+        </div>
+
+        <a class="item"
+           *ngFor="let city of settingService.cities"
+           [ngClass]="{active: city.active}"
+           (click)="showCity(city)">
+            {{city.name}}
+        </a>
+
+        <div class="right menu">
+            <div class="item">
+                <div class="ui transparent icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui primary button" (click)="myModalNormal.show({inverted: true})">Přidat brigádu</div>
             </div>
         </div>
     </div>
-
-    <button class="ui button primary" (click)="myModalNormal.show({inverted: true})">Click me</button>
-    <sm-modal title="Hello from Modal" class="" icon="home" #myModalNormal>
-        <modal-content>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </modal-content>
-        <modal-actions>
-            <div class="ui buttons">
-                <div class="ui button primary" (click)="myModalNormal.hide()">Close modal</div>
-            </div>
-        </modal-actions>
-    </sm-modal>
 </div>
+
+
+<sm-modal title="Hello from Modal" class="" icon="home" #myModalNormal>
+    <modal-content>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    </modal-content>
+    <modal-actions>
+        <div class="ui buttons">
+            <div class="ui button primary" (click)="myModalNormal.hide()">Close modal</div>
+        </div>
+    </modal-actions>
+</sm-modal>

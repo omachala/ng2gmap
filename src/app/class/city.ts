@@ -4,6 +4,7 @@ export class City {
 
     name: string;
     setting: MapSetting;
+    private _active: boolean = false;
 
 
     constructor(name: string, lat: number, lng: number, zoom: number) {
@@ -15,5 +16,14 @@ export class City {
         citySetting.zoom = zoom;
 
         this.setting = citySetting;
+    }
+
+
+    get active(): boolean {
+        return this._active;
+    }
+
+    set active(value: boolean) {
+        this._active = value;
     }
 }

@@ -1,0 +1,8 @@
+.panel{
+    position: absolute;
+    width: 400px;
+    top: 100px;
+    left: 10px;
+    height: 100%;
+    z-index: 200;
+}
