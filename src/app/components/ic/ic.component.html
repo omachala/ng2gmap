@@ -1,0 +1,37 @@
+<form [formGroup]="form"
+      (ngSubmit)="onSubmit(form.value)"
+      class="ui form"
+      [class.loading]="loading"
+      [class.error]="!form.valid && form.dirty">
+
+    <div class="field"
+         [class.error]="!form.controls.ic.valid && form.controls.ic.dirty">
+
+        <label>IČ</label>
+        <input type="text"
+               [formControl]="form.controls['ic']"
+               placeholder="identifikační číslo organizace">
+
+        <div *ngIf="!form.controls.ic.valid"
+             class="ui error message">
+            IC is invalid
+        </div>
+
+        <div *ngIf="form.controls.ic.hasError('required')"
+             class="ui error message">
+            IC is required
+        </div>
+    </div>
+
+    <div *ngIf="form.controls.ic.hasError('invalidIc')"
+         class="ui error message">
+        IC must begin with <span>123</span>
+    </div>
+
+    <div *ngIf="!form.valid"
+         class="ui error message">
+        Form is invalid
+    </div>
+
+    <button [disabled]="!form.valid" type="submit" class="ui submit button">Pokračovat</button>
+</form>

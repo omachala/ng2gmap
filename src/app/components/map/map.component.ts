@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {MapSetting} from "../../class/map-setting";
+import {MapService} from "../../services/map.service";
 
 @Component({
     selector: 'app-map',
@@ -22,12 +23,13 @@ import {MapSetting} from "../../class/map-setting";
 export class MapComponent implements OnInit {
     @Input() mapSetting: MapSetting;
 
-    constructor() {
+    constructor(private mapService: MapService) {
 
     }
 
 
     ngOnInit() {
+        this.mapService.mapSetting.subscribe((mapSetting: MapSetting) => this.mapSetting = mapSetting);
     }
 
 }

@@ -1,7 +1,7 @@
-import {Component, OnInit, EventEmitter, Output} from "@angular/core";
-import {MapSetting} from "../../class/map-setting";
+import {Component, OnInit} from "@angular/core";
 import {SettingService} from "../../services/api/setting.service";
 import {City} from "../../class/city";
+import {MapService} from "../../services/map.service";
 
 @Component({
     selector: 'app-city-box',
@@ -10,17 +10,18 @@ import {City} from "../../class/city";
 })
 export class CityBoxComponent implements OnInit {
 
-    @Output() onCityChange: EventEmitter<MapSetting>;
 
-    constructor(protected settingService: SettingService) {
-        this.onCityChange = new EventEmitter();
+    constructor(protected settingService: SettingService, private mapService: MapService) {
+
     }
 
     ngOnInit() {
     }
 
     public showCity(city: City) {
-        this.onCityChange.emit(city.setting);
+
+        this.mapService.changeMapSetting(city.setting);
+
         this.settingService.cities.map((city: City) => {
             city.active = false;
         });

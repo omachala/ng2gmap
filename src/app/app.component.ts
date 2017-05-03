@@ -3,7 +3,7 @@ import {MapSetting} from "./class/map-setting";
 
 @Component({
     selector: 'app-root',
-    template: `<app-city-box (onCityChange)="cityChange($event)"></app-city-box>
+    template: `<app-city-box></app-city-box>
                 <app-panel></app-panel>
                 <app-map [mapSetting]="currentMapSetting" ></app-map>`,
     styleUrls: ['./app.component.css']
@@ -21,8 +21,5 @@ export class AppComponent {
         this.currentMapSetting.mapCenterLng = 15.460616;
     }
 
-    public cityChange(mapSetting: MapSetting) {
-        this.currentMapSetting = mapSetting;
-    }
 
 }
